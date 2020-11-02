@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:urna_mobile/screens/login/login_screen.dart';
+import 'package:urna_mobile/legacy/screens/login/login_screen.dart';
 
 void main() {
   runApp(MyApp());

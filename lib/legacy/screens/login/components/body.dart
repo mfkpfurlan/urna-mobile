@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:urna_mobile/components/already_have_an_account_acheck.dart';
-import 'package:urna_mobile/components/rounded_button.dart';
-import 'package:urna_mobile/components/rounded_input_field.dart';
-import 'package:urna_mobile/components/rounded_password_field.dart';
+import 'package:urna_mobile/legacy/components/already_have_an_account_acheck.dart';
+import 'package:urna_mobile/legacy/components/rounded_button.dart';
+import 'package:urna_mobile/legacy/components/rounded_input_field.dart';
+import 'package:urna_mobile/legacy/components/rounded_password_field.dart';
 import 'background.dart';
 import 'package:flutter_svg/svg.dart';
 
