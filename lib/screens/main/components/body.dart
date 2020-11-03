@@ -1,20 +1,93 @@
 import 'package:flutter/material.dart';
+import 'package:urna_mobile/legacy/screens/login/login_screen.dart';
 
-class ManuBody extends StatelessWidget {
+class MenuBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      primary: true,
-      padding: EdgeInsets.all(10),
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 10,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.teal
-          ),
+    Size size = MediaQuery.of(context).size;
+
+    return Padding(
+      padding: EdgeInsets.only(top: size.height * 0.06),
+      child: GridView.count(
+        primary: true,
+        crossAxisCount: 2,
+        padding: EdgeInsets.only(
+          left: size.width * 0.03,
+          right: size.width * 0.03,
         ),
-      ]
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 30,
+        children: [
+          Material(
+            elevation: 7.0,
+            child: Ink.image(
+              image: AssetImage('assets/images/woman.png'),
+              fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginScreen()
+                    )
+                  );
+                },
+              ),
+            ),
+          ),
+          Material(
+            elevation: 7.0,
+            child: Ink.image(
+              image: AssetImage('assets/images/woman.png'),
+              fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginScreen()
+                    )
+                  );
+                },
+              ),
+            ),
+          ),
+          Material(
+            elevation: 7.0,
+            child: Ink.image(
+              image: AssetImage('assets/images/woman.png'),
+              fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginScreen()
+                    )
+                  );
+                },
+              ),
+            ),
+          ),
+          Material(
+            elevation: 7.0,
+            child: Ink.image(
+              image: AssetImage('assets/images/woman.png'),
+              fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginScreen()
+                    )
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
