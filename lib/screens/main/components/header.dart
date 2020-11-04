@@ -14,12 +14,22 @@ class MenuHeader extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(top: size.height * 0.05),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('assets/images/woman.png'),
-              backgroundColor: Colors.yellow,
-              foregroundColor: Colors.black,
-              radius: 55,
+            padding: EdgeInsets.only(
+              top: size.height * 0.025,
+              left: size.width * 0.0,
+            ),
+            child: Container(
+              padding: EdgeInsets.all(2.5),
+              decoration: BoxDecoration(
+                color: Colors.yellow,
+                shape: BoxShape.circle,
+              ),
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/images/woman.png'),
+                backgroundColor: Colors.yellow,
+                foregroundColor: Colors.black,
+                radius: 60,
+              ),
             ),
           ),
           Padding(

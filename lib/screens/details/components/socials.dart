@@ -29,6 +29,18 @@ class _DetailsSocialsState extends State<DetailsSocials> {
             title: Text(douglas.data[2].description),
           ),
         ),
+        Card(
+          child: ListTile(
+            leading: Icon(douglas.data[2].icon),
+            title: Text(douglas.data[2].description),
+          ),
+        ),
+        Card(
+          child: ListTile(
+            leading: Icon(douglas.data[2].icon),
+            title: Text(douglas.data[2].description),
+          ),
+        ),
       ],
     );
   }

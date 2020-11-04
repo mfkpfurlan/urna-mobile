@@ -3,6 +3,8 @@ import 'package:urna_mobile/mocks/candidato.dart';
 import 'package:urna_mobile/screens/details/components/header.dart';
 import 'package:urna_mobile/screens/details/components/socials.dart';
 
+import 'components/body.dart';
+
 class DetailsPage extends StatefulWidget {
   @override
   _DetailsPageState createState() => _DetailsPageState();
@@ -16,7 +18,18 @@ class _DetailsPageState extends State<DetailsPage> {
       body: Column(
         children: <Widget>[
           DetailsHeader(),
-          // DetailsBody(),
+          Padding(
+            padding: EdgeInsets.only(top: 5),
+          ),
+          Container(
+            height: 270,
+            child: Expanded(
+              child: DetailsBody(),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(bottom: 2),
+          ),
           Expanded(
             child: DetailsSocials(),
           ),
