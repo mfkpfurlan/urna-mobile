@@ -39,41 +39,41 @@ class _VoteKeyboardState extends State<VoteKeyboard> {
     return Column(
       children: [
         new Row(children: [
-          buildButton("7", Colors.white),
-          buildButton("8", Colors.white),
-          buildButton("9", Colors.white),
+          buildNumericButton("7"),
+          buildNumericButton("8"),
+          buildNumericButton("9"),
         ]),
         new Row(children: [
-          buildButton("4", Colors.white),
-          buildButton("5", Colors.white),
-          buildButton("6", Colors.white),
+          buildNumericButton("4"),
+          buildNumericButton("5"),
+          buildNumericButton("6"),
         ]),
         new Row(children: [
-          buildButton("1", Colors.white),
-          buildButton("2", Colors.white),
-          buildButton("3", Colors.white),
+          buildNumericButton("1"),
+          buildNumericButton("2"),
+          buildNumericButton("3"),
         ]),
         new Row(children: [
-          buildButton("", Colors.white),
-          buildButton("0", Colors.white),
-          buildButton("", Colors.white),
+          buildNumericButton(""),
+          buildNumericButton("0"),
+          buildNumericButton(""),
         ]),
         new Row(children: [
-          buildButton("BRANCO", Colors.white),
-          buildButton("CORRIGE", Colors.yellow),
-          buildButton("CONFIRMA", Colors.green),
+          buildTextButton("BRANCO", Colors.white),
+          buildTextButton("CORRIGE", Colors.yellow),
+          buildTextButton("CONFIRMA", Colors.green),
         ]),
       ],
     );
   }
 
-  Widget buildButton(String buttonText, Color color, {Function onpress}) {
+  Widget buildNumericButton(String buttonText, {Function onpress}) {
     return new Expanded(
       child: new OutlineButton(
         padding: new EdgeInsets.all(20),
         child: Container(
           decoration: BoxDecoration(
-            color: color,
+            color: Colors.transparent,
           ),
           child: new Text(
             buttonText,
@@ -84,6 +84,52 @@ class _VoteKeyboardState extends State<VoteKeyboard> {
           ),
         ),
         onPressed: () => {_showMyDialog()},
+      ),
+    );
+  }
+
+  Widget buildTextButton(String buttonText, Color color, {Future onPress}) {
+    return new Expanded(
+      child: new RaisedButton(
+        padding: new EdgeInsets.only(),
+        child: Container(
+          width: 200,
+          height: 75,
+          decoration: BoxDecoration(
+            color: color,
+          ),
+          child: new Padding(
+            padding: EdgeInsets.only(top: 0),
+            child: Center(
+              child: new Stack(
+                children: <Widget>[
+                  new Text(
+                    buttonText,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      foreground: new Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 3
+                        ..color = Colors.black,
+                    ),
+                  ),
+                  new Text(
+                    buttonText,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        onPressed: () => {onPress ?? null},
       ),
     );
   }
