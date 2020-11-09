@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:urna_mobile/legacy/screens/login/login_screen.dart';
 import 'package:urna_mobile/screens/candidates/candidates.dart';
-import 'package:urna_mobile/screens/vote/vote.dart';
+import 'package:urna_mobile/screens/vote/vote2.dart';
 
 class MenuBody extends StatelessWidget {
   @override
@@ -47,7 +47,7 @@ class MenuBody extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => VotePage()
+                      builder: (context) => VotePage2()
                     )
                   );
                 },
