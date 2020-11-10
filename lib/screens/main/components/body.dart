@@ -23,7 +23,7 @@ class MenuBody extends StatelessWidget {
           Material(
             elevation: 7.0,
             child: Ink.image(
-              image: AssetImage('assets/images/woman.png'),
+              image: AssetImage('assets/images/candidatos.jpg'),
               fit: BoxFit.cover,
               child: InkWell(
                 onTap: () {
@@ -40,7 +40,7 @@ class MenuBody extends StatelessWidget {
           Material(
             elevation: 7.0,
             child: Ink.image(
-              image: AssetImage('assets/images/woman.png'),
+              image: AssetImage('assets/images/urna.jpg'),
               fit: BoxFit.cover,
               child: InkWell(
                 onTap: () {
@@ -74,7 +74,7 @@ class MenuBody extends StatelessWidget {
           Material(
             elevation: 7.0,
             child: Ink.image(
-              image: AssetImage('assets/images/woman.png'),
+              image: AssetImage('assets/images/duvidas.jpg'),
               fit: BoxFit.cover,
               child: InkWell(
                 onTap: () {

@@ -11,12 +11,20 @@ class MenuHeader extends StatelessWidget {
       decoration: new BoxDecoration(
         color: Colors.green,
       ),
-      child: Column(
+      child: Stack(
         children: [
+          Container(
+            child: Image.asset(
+              'assets/images/br.jpg',
+              height: 400,
+              width: 600,
+              fit: BoxFit.none,
+            ),
+          ),
           Padding(
             padding: EdgeInsets.only(
               top: size.height * 0.025,
-              left: size.width * 0.0,
+              left: size.width * 0.35,
             ),
             child: Container(
               padding: EdgeInsets.all(2.5),
@@ -33,7 +41,7 @@ class MenuHeader extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: size.height * 0.02),
+            padding: EdgeInsets.only(top: size.height * 0.23),
             child: Container(
               color: Colors.yellow,
               width: size.width,

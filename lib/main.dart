@@ -6,13 +6,28 @@ void main() {
   runApp(MyApp());
 }
 
+Map<int, Color> colorCodes = {
+  50: Color.fromRGBO(23, 120, 32, .1),
+  100:  Color.fromRGBO(23, 120, 32, .2),
+  200:  Color.fromRGBO(23, 120, 32, .3),
+  300:  Color.fromRGBO(23, 120, 32, .4),
+  400:  Color.fromRGBO(23, 120, 32, .5),
+  500:  Color.fromRGBO(23, 120, 32, .6),
+  600:  Color.fromRGBO(23, 120, 32, .7),
+  700:  Color.fromRGBO(23, 120, 32, .8),
+  800:  Color.fromRGBO(23, 120, 32, .9),
+  900:  Color.fromRGBO(23, 120, 32, 1)
+};
+
+MaterialColor customGreen = MaterialColor(0xFF177820, colorCodes);
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: customGreen,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MenuPage(),

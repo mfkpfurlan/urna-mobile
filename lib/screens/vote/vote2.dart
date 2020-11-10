@@ -8,6 +8,8 @@ class VotePage2 extends StatefulWidget {
 class _VotePage2State extends State<VotePage2> {
   List<String> voteOutput = ["", "", "", "", ""];
   bool mayor = true;
+
+  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -398,6 +400,9 @@ class _VotePage2State extends State<VotePage2> {
             //dialog
             print("CONFIRMA");
             print(display.sublist(0,2));
+            setState(() {
+              mayor = false;
+            });
           } else {
             //dialog
             print("NOT YET");
