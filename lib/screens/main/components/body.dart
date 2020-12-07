@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:urna_mobile/legacy/screens/login/login_screen.dart';
 import 'package:urna_mobile/screens/candidates/candidates.dart';
+import 'package:urna_mobile/screens/login/login.dart';
 import 'package:urna_mobile/screens/vote/vote2.dart';
 
 class MenuBody extends StatelessWidget {
+  final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -61,10 +64,11 @@ class MenuBody extends StatelessWidget {
               fit: BoxFit.cover,
               child: InkWell(
                 onTap: () {
+                  auth.signOut();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => LoginScreen()
+                      builder: (context) => LoginPage()
                     )
                   );
                 },
