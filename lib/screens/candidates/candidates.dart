@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:urna_mobile/mocks/candidato.dart';
 import 'package:urna_mobile/mocks/partido.dart';
 import 'package:urna_mobile/screens/details/datails.dart';
+import 'package:urna_mobile/services/candidate_service.dart';
+import 'package:urna_mobile/services/vote_service.dart';
 
 class ListCanditates extends StatefulWidget {
   @override
@@ -9,8 +12,19 @@ class ListCanditates extends StatefulWidget {
 }
 
 class _ListCanditatesState extends State<ListCanditates> {
+  CandidateService candidateService = new CandidateService();
+  VoteService voteService = new VoteService();
+
+  FirebaseFirestore _db = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
+    var votes = voteService.getVotes();
+    votes.map((event) => print(event));
+    votes.forEach((element) {
+      for(var i = 0; i < element.length; i++) {
+        print(element.asMap()[i].voter);
+      }
+    });
     return Scaffold(
       appBar: AppBar(
         title: Text('Lista de Candidatos'),
@@ -25,6 +39,7 @@ class _ListCanditatesState extends State<ListCanditates> {
             ),
             children: [
               Column(
+                // children: _buildExpandable(partidos[index]),
                 children: _buildExpandable(partidos[index]),
               ),
             ],

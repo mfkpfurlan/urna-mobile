@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:urna_mobile/services/auth.dart';
+import 'package:urna_mobile/services/models/vote.dart';
+import 'package:urna_mobile/services/vote_service.dart';
 
 class VotePage2 extends StatefulWidget {
   @override
@@ -7,8 +10,11 @@ class VotePage2 extends StatefulWidget {
 
 class _VotePage2State extends State<VotePage2> {
   List<String> voteOutput = ["", "", "", "", ""];
-  bool mayor = true;
+  bool mayor = false;
 
+  VoteService voteService = new VoteService();
+
+  AuthService authService = new AuthService();
   
   @override
   Widget build(BuildContext context) {
@@ -481,12 +487,17 @@ class _VotePage2State extends State<VotePage2> {
             display[4] = "";
           });
           print("BRANCO");
+          var vote = new Vote(voter: authService.getEmail(), candidate: '', time: TimeOfDay.now().format(context));
+          voteService.setVote(vote);
           print(display);
           return;
         } else if (buttonText == "CONFIRMA") {
           if (!display.contains("")) {
             //dialog
             print("CONFIRMA");
+            String number = display[0]+display[1]+display[2]+display[3]+display[4];
+            var vote = new Vote(voter: authService.getEmail(), candidate: number, time: TimeOfDay.now().format(context));
+            voteService.setVote(vote);
             print(display);
           } else {
             //dialog
