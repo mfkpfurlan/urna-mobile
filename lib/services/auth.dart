@@ -4,6 +4,8 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   String getEmail() {
-    return _auth.currentUser.email;
+    if (_auth.currentUser != null) {
+      return _auth.currentUser.email;
+    }
   }
 }

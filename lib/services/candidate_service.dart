@@ -25,4 +25,8 @@ class CandidateService {
       .doc(id)
       .delete();
   }
+
+  getSnapshots() {
+    return _db.collection('candidates').snapshots();
+  }
 }

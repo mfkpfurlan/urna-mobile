@@ -52,7 +52,7 @@ class _VotePage2State extends State<VotePage2> {
                               child: Padding(
                                   padding: EdgeInsets.symmetric(vertical: 10),
                                   child: Text(
-                                    "MARIA APARECIDA DE LOURDES",
+                                    "YOUR CANDIDATE",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize: 24,
@@ -68,7 +68,7 @@ class _VotePage2State extends State<VotePage2> {
                   Container(
                     height: 200,
                     width: 150,
-                    child: Image.asset('assets/images/woman.png'),
+                    child: Image.asset('assets/images/silhouete.jpeg'),
                   ),
                 ],
               ),
@@ -181,18 +181,45 @@ class _VotePage2State extends State<VotePage2> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Votacao'),
+          title: Text('Voting'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Voce entrou na tela de votacao'),
-                Text('Para prosseguir, clique em Prosseguir'),
+                Text('You confirmed your vote')
               ],
             ),
           ),
           actions: <Widget>[
             OutlineButton(
-              child: Text('Prosseguir'),
+              child: Text('Continue'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _showMyDialog2() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Voting'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('You vote is not complete')
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            OutlineButton(
+              child: Text('Continue'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -489,6 +516,7 @@ class _VotePage2State extends State<VotePage2> {
           print("BRANCO");
           var vote = new Vote(voter: authService.getEmail(), candidate: '', time: TimeOfDay.now().format(context));
           voteService.setVote(vote);
+          _showMyDialog();
           print(display);
           return;
         } else if (buttonText == "CONFIRMA") {
@@ -498,9 +526,10 @@ class _VotePage2State extends State<VotePage2> {
             String number = display[0]+display[1]+display[2]+display[3]+display[4];
             var vote = new Vote(voter: authService.getEmail(), candidate: number, time: TimeOfDay.now().format(context));
             voteService.setVote(vote);
+            _showMyDialog();
             print(display);
           } else {
-            //dialog
+            _showMyDialog2();
             print("NOT YET");
             return;
           }

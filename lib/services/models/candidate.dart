@@ -9,7 +9,7 @@ class Candidate {
     return Candidate(
       name: json['voter'],
       number: json['candidate'],
-      about: json['candidateMayor']
+      about: json['about']
     );
   }
 

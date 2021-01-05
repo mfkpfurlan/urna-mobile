@@ -1,29 +1,62 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:urna_mobile/legacy/screens/login/login_screen.dart';
-import 'package:urna_mobile/screens/candidates/candidates.dart';
+import 'package:urna_mobile/screens/candidates2.dart/candidates2.dart';
+import 'package:urna_mobile/screens/listVote/listVote.dart';
 import 'package:urna_mobile/screens/login/login.dart';
 import 'package:urna_mobile/screens/vote/vote2.dart';
 import 'package:urna_mobile/services/auth.dart';
-import 'package:urna_mobile/services/candidate_service.dart';
 import 'package:urna_mobile/services/vote_service.dart';
 
-class MenuBody extends StatelessWidget {
+class MenuBody extends StatefulWidget {
+  @override
+  _MenuBodyState createState() => _MenuBodyState();
+}
+class _MenuBodyState extends State<MenuBody> {
   final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     VoteService voteService = new VoteService();
-
     AuthService authService = new AuthService();
-
-    CandidateService candidateService = new CandidateService();
+    int _votedBool;
+    voteService.alreadyVoted(authService.getEmail()).then((val) {
+      _votedBool = val;
+      print(val);
+    });
 
     bool voted() {
       var result =
-          voteService.alreadyVoted(authService.getEmail()) == 0 ? false : true;
+          _votedBool == 0 ? false : true;
+      print(result);
       return result;
+    }
+
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('You have already voted'),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text('Since you have already voted, you can not do it again.'),
+                  Text('You can edit your vote in the edit vote page.'),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Return'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
     }
 
     return Padding(
@@ -45,10 +78,8 @@ class MenuBody extends StatelessWidget {
               fit: BoxFit.cover,
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ListCanditates()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Candidate2()));
                 },
               ),
             ),
@@ -61,8 +92,7 @@ class MenuBody extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   if (voted() == true) {
-                    //alert
-                    return false;
+                    return _showMyDialog();
                   } else {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => VotePage2()));
@@ -74,13 +104,11 @@ class MenuBody extends StatelessWidget {
           Material(
             elevation: 7.0,
             child: Ink.image(
-              image: AssetImage('assets/images/woman.png'),
-              //new image
-              fit: BoxFit.cover,
+              image: AssetImage('assets/images/logout.jpeg'),
+              fit: BoxFit.contain,
               child: InkWell(
                 onTap: () {
                   auth.signOut();
-                  //get votes
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LoginPage()));
                 },
@@ -90,12 +118,12 @@ class MenuBody extends StatelessWidget {
           Material(
             elevation: 7.0,
             child: Ink.image(
-              image: AssetImage('assets/images/duvidas.jpg'),
-              fit: BoxFit.cover,
+              image: AssetImage('assets/images/results.jpeg'),
+              fit: BoxFit.fill,
               child: InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                      MaterialPageRoute(builder: (context) => ListVote()));
                 },
               ),
             ),

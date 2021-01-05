@@ -33,7 +33,7 @@ class MenuHeader extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: CircleAvatar(
-                backgroundImage: AssetImage('assets/images/woman.png'),
+                backgroundImage: AssetImage('assets/images/stick.jpeg'),
                 backgroundColor: Colors.yellow,
                 foregroundColor: Colors.black,
                 radius: 60,
